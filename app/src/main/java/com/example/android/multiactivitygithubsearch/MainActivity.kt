@@ -1,5 +1,6 @@
 package com.example.android.multiactivitygithubsearch
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private val apiBaseUrl = "https://api.github.com"
     private val tag = "MainActivity"
 
-    private val repoListAdapter = GitHubRepoListAdapter()
+    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
 
     private lateinit var requestQueue: RequestQueue
 
@@ -88,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         searchResultsListRV.visibility = View.INVISIBLE
         searchErrorTV.visibility = View.INVISIBLE
         requestQueue.add(req)
+    }
+
+    private fun onGitHubRepoClick(repo: GitHubRepo) {
+        val intent = Intent(this, RepoDetailActivity::class.java)
+        startActivity(intent)
     }
 
     private data class GitHubSearchResults(

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/layout/activity_repo_detail.xml" value="0.278125" />
         <entry key="app/src/main/res/layout/github_repo_list_item.xml" value="0.1503623188405797" />
       </map>
     </option>
