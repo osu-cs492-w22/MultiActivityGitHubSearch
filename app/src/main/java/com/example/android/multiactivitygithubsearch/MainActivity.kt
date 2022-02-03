@@ -92,7 +92,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val intent = Intent(this, RepoDetailActivity::class.java)
+        val intent = Intent(this, RepoDetailActivity::class.java).apply {
+            putExtra(EXTRA_GITHUB_REPO, repo)
+        }
+//        intent.putExtra(EXTRA_GITHUB_REPO, repo)
         startActivity(intent)
     }
 

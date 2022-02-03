@@ -13,6 +13,7 @@
         android:theme="@style/Theme.GitHubSearch">
         <activity
             android:name=".RepoDetailActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
