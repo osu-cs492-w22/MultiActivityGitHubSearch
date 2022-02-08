@@ -6,5 +6,7 @@
     <string name="search_error">We were unable to execute your search.  Please check your internet connection and try again.</string>
     
     <string name="action_share">Share</string>
+    <string name="share_text">%1$s on GitHub: %2$s</string>
+
     <string name="action_view_repo">View repo on GitHub</string>
 </resources>

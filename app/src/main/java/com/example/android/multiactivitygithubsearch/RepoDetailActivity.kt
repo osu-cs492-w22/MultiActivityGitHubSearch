@@ -1,5 +1,6 @@
 package com.example.android.multiactivitygithubsearch
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,10 @@ class RepoDetailActivity : AppCompatActivity() {
                 viewRepoOnWeb()
                 true
             }
+            R.id.action_share -> {
+                shareRepo()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -45,8 +50,23 @@ class RepoDetailActivity : AppCompatActivity() {
         if (repo != null) {
             val uri = Uri.parse(repo!!.url)
             val intent: Intent = Intent(Intent.ACTION_VIEW, uri)
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                // Launch a snackbar...
+            }
+        }
+    }
 
-            startActivity(intent)
+    private fun shareRepo() {
+        if (repo != null) {
+            val text = getString(R.string.share_text, repo!!.name, repo!!.url)
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, text)
+                type = "text/plain"
+            }
+            startActivity(Intent.createChooser(intent, null))
         }
     }
 }
